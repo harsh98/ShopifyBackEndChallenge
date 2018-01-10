@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Shopify Challenge</title>
+  	<meta charset="utf-8">
+  </head>
+  <body>
+  	<script type="text/javascript">
+  		let url = "https://backend-challenge-summer-2018.herokuapp.com/challenges.json?id=1&page=1";
+  		var xmlHttp = null;
+  		getInfo();
+
+  		function getInfo(){
+  			xmlHttp = new XMLHttpRequest();
+  			xmlHttp.onreadystatechange = processRequest;
+  			xmlHttp.open("GET", url, true);
+  			xmlHttp.send();
+  		}
+
+  		function processRequest(){
+  			if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+  				if (xmlHttp.responseText == null){
+  					alert("Not found");
+  				} else {
+            console.log(xmlHttp.responseText);
+          }
+        } else {
+
+          	alert("Connection Error");
+        }
+      }
+     </script>
+  </body>
+</html>

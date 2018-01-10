@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Shopify Challenge</title>
+  	<meta charset="utf-8">
+  </head>
+  <body>
+  	<script type="text/javascript">
+  		let url = "https://backend-challenge-summer-2018.herokuapp.com/challenges.json?id=1&page=1";
+      // Remove these comments when u wanna change url
+      let newUrl = null;
+      for (let i = 1; i <= 2; i++){
+        newUrl = url.replace ("id=1", "id=" + i);
+      }
+      let newwUrl = null;
+      for (let i = 1; i <= 3; i++){
+        newwUrl = url.substring (0, url.length-1) + i;
+      }
+
+      let finalU = newUrl.substring(0, url.length-1) + newwUrl.substring(url.length-1);
+
+      alert (finalU);
+
+
+  		var xmlHttp = null;
+  		getInfo();
+
+  		function getInfo(){
+  			xmlHttp = new XMLHttpRequest();
+  			xmlHttp.onreadystatechange = processRequest;
+  			xmlHttp.open("GET", url, true);
+  			xmlHttp.send();
+  		}
+
+  		function processRequest(){
+  			if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+  				if (xmlHttp.responseText == null){
+  					alert("Not found");
+  				} else {
+            console.log(xmlHttp.responseText);
+          }
+        } else {
+
+          	alert("Connection Error");
+        }
+      }
+     </script>
+  </body>
+</html>
